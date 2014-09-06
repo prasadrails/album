@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Albums</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+  <div class="container-fluid">
+    <div class="row-fluid main-container">
+      <div class="span12 main-body">
+        <%= bootstrap_flash %>
+        <%= render 'layouts/messages' %>
+        <%= render "layouts/header"%>
+
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

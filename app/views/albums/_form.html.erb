@@ -1,0 +1,42 @@
+<%= form_for @album, :html => { :class => 'form-horizontal', :multipart => true} do |f| %>
+
+  <% if @album.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
+      <ul>
+        <% @album.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+
+
+  <h2>Photos</h2>
+    <div class="items">
+      <%= f.nested_fields_for :photos do |f|
+      render 'photo', photo: f
+      end -%>
+    </div>
+    <a href="#" class="add">add photo</a>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  albums_path, :class => 'btn' %>
+    </div>
+  <% end %>
+
+<script>
+$(document).ready(function(e) {
+  $("FORM").nestedFields();
+});
+</script>

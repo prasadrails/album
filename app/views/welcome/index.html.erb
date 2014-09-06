@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1><%= "Welcome to Albums" %></h1>
+</div>
+
+
+
+<div class="row span11">
+  <div class = "pull-right">
+    <%= link_to "All Albums", albums_path  %>
+  </div>
+</div>
+
+  <div class="row span10">
+    <% @photos.each do |photo| %>
+      <div class="col-sm-4 col-md-2 top20 span3" >
+        <div class="thumbnail">
+          <%= image_tag(photo.image.url(:medium), size: "200x200", alt: photo.tag_line) %>
+        </div>
+
+        <div class="caption">
+          <p>
+
+            <%= photo.tag_line %>
+          </p>
+        </div>
+
+
+      </div>
+    <% end -%>
+  </div>

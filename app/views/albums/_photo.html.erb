@@ -1,0 +1,22 @@
+<fieldset class="item">
+  <div class="control-group">
+    <%= photo.label :image, :class => 'control-label' %>
+    <div class="controls">
+      <%= image_tag(photo.object.image.url(:thumb), size: "50x50", alt: photo.object.tag_line)  unless photo.object.new_record? %>
+      <%= photo.file_field :image %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= photo.label :tag_line, :class => 'control-label' %>
+    <div class="controls">
+      <%= photo.text_field :tag_line, :class => 'text_field' %>
+
+      <a href="#" class="remove" data-confirm="Are you sure?">remove</a>
+      <%= photo.hidden_field :id %>
+      <%= photo.hidden_field :_destroy %>
+    </div>
+  </div>
+
+
+
+</fieldset>
