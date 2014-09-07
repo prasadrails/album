@@ -11,4 +11,12 @@ class Photo < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /^image\/(png|gif|jpeg)/
   validates_attachment :image, :presence => true
   validates :tag_line, :presence => true
+
+  before_create :store_owner_id
+
+  private
+  # store owner id in photos table.
+  def store_owner_id
+    self.user_id = self.album.user_id
+  end
 end
